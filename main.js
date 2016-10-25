@@ -1,7 +1,8 @@
-var isOn = false;
-var interval = 500; // 500 milliseconds = 0.5 seconds
+function start(){
+ g.drawString("Hello World!",2,2);
+ g.flip();
+}
 
-setInterval(function(){
-    isOn = !isOn; // Flips the state on or off
-    digitalWrite(D2, isOn); // D2 is the blue LED on the ESP8266 boards
-}, interval);
+var s = new SPI();
+s.setup({mosi: 13, sck: 14});
+var g = require("SSD1306").connectSPI(s, 12 /* DC */, 5 /* RST */, start);
